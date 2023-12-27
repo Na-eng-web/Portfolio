@@ -1,16 +1,8 @@
-import { Box, Button } from "@mui/material";
-import { useState } from "react";
-import "./App.css";
+import { RouterProvider } from "react-router-dom";
+import allRoutes from "./routes";
 
-function App() {
-  const [count, setCount] = useState(0);
-
-  return (
-    <Box>
-      <Box>count: {count}</Box>
-      <Button onClick={() => setCount(count + 1)}>increment</Button>
-    </Box>
-  );
-}
+const App = () => {
+  return <RouterProvider router={allRoutes} />;
+};
 
 export default App;
