@@ -1,21 +1,21 @@
 import { Navigate, createHashRouter } from "react-router-dom";
-import ContactPage from "./pages/contact-page";
-import HomePage from "./pages/home-page";
-import ProjectPage from "./pages/project-page";
+import { Header } from "./component/header";
+import { ContactPage, HomePage, ProjectPage } from "./pages";
 
 const allRoutes = createHashRouter([
   {
     path: "/",
-    element: <HomePage />,
-    errorElement: "Error",
+    element: <Header />,
+    errorElement: "error",
     children: [
       {
-        errorElement: "Error",
+        errorElement: "error",
         children: [
           { path: "/", element: <Navigate to="home" /> },
           { path: "home", element: <HomePage /> },
-          { path: "projects", element: <ProjectPage /> },
           { path: "contact", element: <ContactPage /> },
+          { path: "project", element: <ProjectPage /> },
+          { path: "try", element: "hello mf" },
         ],
       },
     ],
