@@ -8,7 +8,7 @@ export const bgcolor = {
 export const NavigationLinks = [
   {
     displayName: "resume",
-    path: "/try",
+    path: "/resume",
     bgcolor: bgcolor.secondary,
   },
   {

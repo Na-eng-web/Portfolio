@@ -15,7 +15,7 @@ const allRoutes = createHashRouter([
           { path: "home", element: <HomePage /> },
           { path: "contact", element: <ContactPage /> },
           { path: "project", element: <ProjectPage /> },
-          { path: "try", element: "hello mf" },
+          { path: "resume", element: "hello mf" },
         ],
       },
     ],
