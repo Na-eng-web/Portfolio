@@ -1,3 +1,3 @@
 import IconPhoto from "./narendra.jpeg";
-
-export { IconPhoto };
+import resume from "./NarendraResume.pdf";
+export { IconPhoto, resume };

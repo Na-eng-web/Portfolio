@@ -3,7 +3,7 @@ import { Box, Button, Divider, IconButton, Typography } from "@mui/material";
 import { motion } from "framer-motion";
 import { Children, useState } from "react";
 import { Link, Outlet } from "react-router-dom";
-import { NavigationLinks, bgcolor } from "../profile";
+import { NavigationLinks, bgColor } from "../profile";
 import { Footer } from "./footer";
 import Mediaquery from "./medial-queries";
 
@@ -20,7 +20,7 @@ export const Header = () => {
       <Box
         py={isMobileView ? 2 : 3}
         px={isMobileView ? 3 : 5}
-        bgcolor={bgcolor.primary}
+        bgcolor={bgColor.primary}
         display="flex"
         flexDirection={isMobileView ? "column" : "row"}
         alignItems={isMobileView ? "center" : "flex-start"}
@@ -38,7 +38,7 @@ export const Header = () => {
             alignItems={isMobileView ? "center" : "center"}
           >
             <Box
-              bgcolor={bgcolor.secondary}
+              bgcolor={bgColor.secondary}
               height={isMobileView ? "16px" : "22px"}
               width={isMobileView ? "16px" : "22px"}
               borderRadius="50%"
@@ -67,18 +67,37 @@ export const Header = () => {
             {Children.toArray(
               NavigationLinks.map((link, index) => (
                 <Box display="flex">
-                  <Link to={link.path}>
-                    <Button
-                      sx={{
-                        fontSize: "16px",
-                        textTransform: "capitalize",
-                        mx: 0.5,
-                        color: "black",
-                      }}
+                  {link.displayName === "resume" ? (
+                    <a
+                      href={link.path}
+                      style={{ textDecoration: "none", color: "black" }}
+                      download
                     >
-                      {link.displayName}
-                    </Button>
-                  </Link>
+                      <Button
+                        sx={{
+                          fontSize: "16px",
+                          textTransform: "capitalize",
+                          mx: 0.5,
+                          color: "black",
+                        }}
+                      >
+                        {link.displayName}
+                      </Button>
+                    </a>
+                  ) : (
+                    <Link to={link.path}>
+                      <Button
+                        sx={{
+                          fontSize: "16px",
+                          textTransform: "capitalize",
+                          mx: 0.5,
+                          color: "black",
+                        }}
+                      >
+                        {link.displayName}
+                      </Button>
+                    </Link>
+                  )}
                   {index !== NavigationLinks.length - 1 && (
                     <Divider orientation="vertical" />
                   )}
@@ -100,28 +119,46 @@ export const Header = () => {
           <Box
             py={1}
             px={2}
-            bgcolor={bgcolor.primary}
+            bgcolor={bgColor.primary}
             display="flex"
             flexDirection="column"
             alignItems="flex-start"
           >
             {Children.toArray(
-              NavigationLinks.map((link) => (
-                <Link
-                  to={link.path}
-                  style={{ textDecoration: "none", color: "black" }}
-                >
-                  <Button
-                    sx={{
-                      fontSize: "16px",
-                      textTransform: "capitalize",
-                      color: "black",
-                    }}
+              NavigationLinks.map((link) =>
+                link.displayName === "resume" ? (
+                  <a
+                    href={link.path}
+                    style={{ textDecoration: "none", color: "black" }}
+                    download
                   >
-                    {link.displayName}
-                  </Button>
-                </Link>
-              ))
+                    <Button
+                      sx={{
+                        fontSize: "16px",
+                        textTransform: "capitalize",
+                        color: "black",
+                      }}
+                    >
+                      {link.displayName}
+                    </Button>
+                  </a>
+                ) : (
+                  <Link
+                    to={link.path}
+                    style={{ textDecoration: "none", color: "black" }}
+                  >
+                    <Button
+                      sx={{
+                        fontSize: "16px",
+                        textTransform: "capitalize",
+                        color: "black",
+                      }}
+                    >
+                      {link.displayName}
+                    </Button>
+                  </Link>
+                )
+              )
             )}
           </Box>
         </motion.div>

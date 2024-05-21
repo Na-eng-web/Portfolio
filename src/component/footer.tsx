@@ -1,7 +1,7 @@
 import { Facebook, LinkedIn, Twitter } from "@mui/icons-material";
 import { Box, Divider, IconButton, Typography } from "@mui/material";
 import { Children } from "react";
-import { bgcolor } from "../profile";
+import { bgColor } from "../profile";
 import Mediaquery from "./medial-queries";
 
 const socialMediaLink = [
@@ -23,7 +23,7 @@ export const Footer = () => {
   const { isMobileView } = Mediaquery();
 
   return (
-    <Box bgcolor={bgcolor.primary} p={5}>
+    <Box bgcolor={bgColor.primary} p={5}>
       <Divider sx={{ mb: 3 }} />
       <Box
         display="flex"

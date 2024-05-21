@@ -1,4 +1,6 @@
-export const bgcolor = {
+import { resume } from "./assets";
+
+export const bgColor = {
   primary: "#f3f3f3",
   secondary: "#eea305",
   tertiary: "#ff3c25",
@@ -8,17 +10,17 @@ export const bgcolor = {
 export const NavigationLinks = [
   {
     displayName: "resume",
-    path: "/resume",
-    bgcolor: bgcolor.secondary,
+    path: resume,
+    bgColor: bgColor.secondary,
   },
   {
     displayName: "project",
     path: "/project",
-    bgcolor: bgcolor.tertiary,
+    bgColor: bgColor.tertiary,
   },
   {
     displayName: "contact",
     path: "/contact",
-    bgcolor: bgcolor.quaternary,
+    bgColor: bgColor.quaternary,
   },
 ];

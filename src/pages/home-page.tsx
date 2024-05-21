@@ -4,7 +4,7 @@ import { Children } from "react";
 import { Link } from "react-router-dom";
 import { IconPhoto } from "../assets";
 import Mediaquery from "../component/medial-queries";
-import { NavigationLinks, bgcolor } from "../profile";
+import { NavigationLinks, bgColor } from "../profile";
 
 export const HomePage = () => {
   const { isMobileView, isTabletView } = Mediaquery();
@@ -19,7 +19,7 @@ export const HomePage = () => {
       <Box
         display="flex"
         minHeight={isMobileView ? "80vh" : "100vh"}
-        bgcolor={bgcolor.primary}
+        bgcolor={bgColor.primary}
         px={5}
         alignItems="center"
         flexDirection={
@@ -73,36 +73,124 @@ export const HomePage = () => {
             justifyContent={isTabletView ? "center" : "flex-start"}
           >
             {Children.toArray(
-              NavigationLinks.map((link) => (
-                <Box
-                  height={isMobileView ? "6rem" : "8rem"}
-                  width={isMobileView ? "6rem" : "8rem"}
-                  maxWidth={isMobileView ? "6rem" : "8rem"}
-                  border={1}
-                  borderRadius="50%"
-                  display="flex"
-                  alignItems="center"
-                  bgcolor={link.bgcolor}
-                  justifyContent="center"
-                  sx={{
-                    ":hover": {
-                      bgcolor: "white",
-                      transition: "background-color 0.5s ease-in-out",
-                    },
-                    boxShadow:
-                      "rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px",
-                  }}
-                >
+              NavigationLinks.map((link, index) =>
+                link.displayName === "resume" ? (
+                  <a
+                    href={link.path}
+                    style={{ textDecoration: "none", color: "black" }}
+                    download
+                  >
+                    <motion.div
+                      initial={{ x: "-100vw" }}
+                      animate={{ x: 0, y: 0 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 40,
+                        damping: 12,
+                        delay: 0.6 * index,
+                      }}
+                    >
+                      <Box
+                        height={isMobileView ? "6rem" : "8rem"}
+                        width={isMobileView ? "6rem" : "8rem"}
+                        maxWidth={isMobileView ? "6rem" : "8rem"}
+                        border={1}
+                        borderRadius="50%"
+                        display="flex"
+                        alignItems="center"
+                        bgcolor={link.bgColor}
+                        justifyContent="center"
+                        sx={{
+                          ":hover": {
+                            bgcolor: "white",
+                            transition: "background-color 0.5s ease-in-out",
+                          },
+                          boxShadow:
+                            "rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px",
+                        }}
+                      >
+                        {link.displayName === "resume" ? (
+                          <a
+                            href={link.path}
+                            style={{ textDecoration: "none", color: "black" }}
+                            download
+                          >
+                            <Typography textTransform="capitalize">
+                              {link.displayName}
+                            </Typography>
+                          </a>
+                        ) : (
+                          <Link
+                            to={link.path}
+                            style={{ textDecoration: "none", color: "black" }}
+                          >
+                            <Typography textTransform="capitalize">
+                              {link.displayName}
+                            </Typography>
+                          </Link>
+                        )}
+                      </Box>
+                    </motion.div>
+                  </a>
+                ) : (
                   <Link
                     to={link.path}
                     style={{ textDecoration: "none", color: "black" }}
                   >
-                    <Typography textTransform="capitalize">
-                      {link.displayName}
-                    </Typography>
+                    <motion.div
+                      initial={{ x: "-100vw" }}
+                      animate={{ x: 0, y: 0 }}
+                      transition={{
+                        type: "spring",
+                        stiffness: 40,
+                        damping: 12,
+                        delay: 0.6 * index,
+                      }}
+                    >
+                      <Box
+                        height={isMobileView ? "6rem" : "8rem"}
+                        width={isMobileView ? "6rem" : "8rem"}
+                        maxWidth={isMobileView ? "6rem" : "8rem"}
+                        border={1}
+                        borderRadius="50%"
+                        display="flex"
+                        alignItems="center"
+                        bgcolor={link.bgColor}
+                        justifyContent="center"
+                        sx={{
+                          ":hover": {
+                            bgcolor: "white",
+                            transition: "background-color 0.5s ease-in-out",
+                          },
+                          boxShadow:
+                            "rgba(0, 0, 0, 0.07) 0px 1px 2px, rgba(0, 0, 0, 0.07) 0px 2px 4px, rgba(0, 0, 0, 0.07) 0px 4px 8px, rgba(0, 0, 0, 0.07) 0px 8px 16px, rgba(0, 0, 0, 0.07) 0px 16px 32px, rgba(0, 0, 0, 0.07) 0px 32px 64px",
+                        }}
+                      >
+                        {link.displayName === "resume" ? (
+                          <a
+                            href={link.path}
+                            style={{ textDecoration: "none", color: "black" }}
+                            download
+                          >
+                            <Typography textTransform="capitalize">
+                              {link.displayName}
+                            </Typography>
+                          </a>
+                        ) : (
+                          <Link
+                            to={link.path}
+                            style={{ textDecoration: "none", color: "black" }}
+                          >
+                            <Typography textTransform="capitalize">
+                              {link.displayName}
+                            </Typography>
+                          </Link>
+                        )}
+                      </Box>
+                    </motion.div>
                   </Link>
-                </Box>
-              ))
+                )
+              )
             )}
           </Box>
         </Box>
